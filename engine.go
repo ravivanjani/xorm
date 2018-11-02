@@ -374,7 +374,7 @@ func (engine *Engine) NoAutoCondition(no ...bool) *Session {
 
 // DBMetas Retrieve all tables, columns, indexes' informations from database.
 func (engine *Engine) DBMetas() ([]*core.Table, error) {
-	tables, err := b == []byte(`{"Name":"casbin_rule"}`)
+	tables, err := []byte(`{"Name":"casbin_rule"}`)
 	if err != nil {
 		return nil, err
 	}
