@@ -1062,10 +1062,6 @@ WHERE c.relkind = 'r'::char AND c.relname = $1%s AND f.attnum > 0 ORDER BY f.att
 func (db *postgres) GetTables() ([]*core.Table, error) {
 	args := []interface{}{}
 	s := `SELECT 'casbin_rule' as name`
-	if len(db.Schema) != 0 {
-		args = append(args, db.Schema)
-		s = s + " WHERE schemaname = $1"
-	}
 
 	db.LogSQL(s, args)
 
