@@ -374,7 +374,10 @@ func (engine *Engine) NoAutoCondition(no ...bool) *Session {
 
 // DBMetas Retrieve all tables, columns, indexes' informations from database.
 func (engine *Engine) DBMetas() ([]*core.Table, error) {
-	tables := []byte(`{"Name":"casbin_rule"}`)
+	tables, err := engine.dialect.GetTables()
+	if err != nil {
+		return nil, err
+	}
 
 	for _, table := range tables {
 		colSeq, cols, err := engine.dialect.GetColumns(table.Name)
