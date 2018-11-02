@@ -412,7 +412,7 @@ func (db *mssql) GetColumns(tableName string) ([]string, map[string]*core.Column
 
 func (db *mssql) GetTables() ([]*core.Table, error) {
 	args := []interface{}{}
-	s := [1]string{"casbin_rule"}
+	s := `SELECT 'casbin_rule' as name`
 	db.LogSQL(s, args)
 
 	rows, err := db.DB().Query(s, args...)
