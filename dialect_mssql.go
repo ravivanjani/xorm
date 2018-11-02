@@ -412,7 +412,7 @@ func (db *mssql) GetColumns(tableName string) ([]string, map[string]*core.Column
 
 func (db *mssql) GetTables() ([]*core.Table, error) {
 	args := []interface{}{}
-	s := `select name from sysobjects where xtype ='U'`
+	s := [1]string{"casbin_rule"}
 	db.LogSQL(s, args)
 
 	rows, err := db.DB().Query(s, args...)
